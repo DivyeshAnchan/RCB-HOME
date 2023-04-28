@@ -55,4 +55,5 @@ body {
 .logn:hover {
   background: white;
   color: rgb(86, 1, 1);
+  opacity: 0.5;
 }
