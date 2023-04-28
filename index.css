@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: url('./cover1.png') center center no-repeat fixed;
+  background-size: cover;
+}
+.container {
+  position: absolute;
+  right: 170px;
+  top: 29%;
+  width: 28%;
+  /* height: 47%; */
+}
+.container h1 {
+  display: inline-block;
+  margin-bottom: 20px;
+  border-bottom: 4px solid rgb(195, 190, 190);
+  color: white;
+  padding: 5px;
+}
+.logn {
+  cursor: pointer;
+  padding: 8px 30px;
+  margin: 30px 5px;
+  border: 2px solid white;
+  background: none;
+  color: white;
+  border-radius: 5px;
+}
+.box {
+  width: 100%;
+  border-bottom: 2px solid rgb(206, 135, 135);
+}
+::placeholder {
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.box input {
+  color: white;
+  background: none;
+  font-size: 14px;
+  padding: 5px;
+  margin: 12px 6px;
+  width: 75%;
+  border: none;
+  outline: none;
+}
+.box i {
+  color: white;
+}
+.logn:hover {
+  background: white;
+  color: rgb(86, 1, 1);
+}
