@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Castoro Titling', cursive;
+}
+body {
+  background: url('../cover1.png') center center no-repeat fixed;
+  background-size: cover;
+}
+.container1 {
+  position: absolute;
+  right: 170px;
+  top: 29%;
+  width: 28%;
+  /* height: 47%; */
+}
+.container1 h1 {
+  display: inline-block;
+  margin-bottom: 20px;
+  border-bottom: 4px solid rgb(195, 190, 190);
+  color: white;
+  padding: 5px;
+}
+.logn {
+  cursor: pointer;
+  padding: 8px 30px;
+  margin: 30px 73px;
+  border: 2px solid white;
+  background: none;
+  color: white;
+  border-radius: 5px;
+}
+.button {
+  position: absolute;
+  top: 264px;
+  left: 208px;
+  border: 2px solid white;
+  background: none;
+
+  padding: 9px 28px;
+
+  border-radius: 4px;
+
+  color: white;
+  font-size: 16px;
+
+  text-decoration: none;
+  vertical-align: middle;
+}
+.button:hover {
+  background: white;
+  color: rgb(86, 1, 1);
+  opacity: 0.5;
+}
+
+#sign {
+  position: absolute;
+  top: 264px;
+  left: 152px;
+  cursor: pointer;
+  padding: 8px 30px;
+  margin: 0px 59px;
+  border: 2px solid white;
+  background: none;
+  color: white;
+  border-radius: 5px;
+}
+.box {
+  width: 100%;
+  border-bottom: 2px solid rgb(206, 135, 135);
+}
+::placeholder {
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.box input {
+  color: white;
+  background: none;
+  font-size: 14px;
+  padding: 5px;
+  margin: 12px 6px;
+  width: 75%;
+  border: none;
+  outline: none;
+}
+.box i {
+  color: white;
+}
+.logn:hover {
+  background: white;
+  color: rgb(86, 1, 1);
+  opacity: 0.5;
+}
+#sign:hover {
+  background: white;
+  color: rgb(86, 1, 1);
+  opacity: 0.5;
+}
+.forgot {
+  text-decoration: none;
+  color: white;
+  position: relative;
+
+  left: 17px;
+  font-size: 13px;
+
+  border-bottom: 2px solid;
+}
