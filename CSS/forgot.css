@@ -7,6 +7,9 @@ body {
   background: url('../cover1.png') center center no-repeat fixed;
   background-size: cover;
 }
+.top {
+  display: none;
+}
 .container1 {
   position: absolute;
   right: 170px;

@@ -1,3 +1,34 @@
+<?php
+$login=false;
+$showerr=false;
+if($_SERVER['REQUEST_METHOD']=='POST'){
+  include 'connect.php';
+ $username=trim($_POST['user']);
+$password=$_POST['password'];
+$sql="Select * from rcb where name='$username' ";
+$result=mysqli_query($con,$sql);
+$fetch=mysqli_num_rows($result);
+if($fetch==1){
+  while($row=mysqli_fetch_assoc($result)){
+    if(password_verify($password,$row['password'])){
+
+      $login='Logged in Successfuly';
+      session_start();
+      $_SESSION['loggedin']=true;
+      $_SESSION['user']=$username;
+      header('location:afterlog.php');
+    }
+    else{
+  $showerr="Invalid Password";
+}
+  }
+
+}else{
+  $showerr="Invalid Username";
+}
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,9 +51,28 @@
     />
   </head>
   <body>
+    <div class=top>
+
+      <?php
+    if($showerr){
+      echo"
+      <div class='alert alert-danger alert-dismissible fade show ' role='alert' >
+      <strong>Error!</strong> ".$showerr."
+      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+      </div>";
+    }
+    if($login){
+    echo"
+      <div class='alert alert-success alert-dismissible fade show' role='alert'>
+      <strong>Success!</strong> ". $login ."
+      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+      </div>";
+    }
+?>
+      </div>
     <div class="container1">
       <h1>Login</h1>
-      <form action="login.php" method="get">
+      <form action="index.php" method="post">
         <div class="box">
           <i class="fa fa-envelope"></i>
           <input
@@ -44,12 +94,20 @@
 
         <button class="logn">Login</button>
       </form>
-      <a href="forgot.html" class="forgot">Forgot Password?</a>
-      <a href="./signup.html" class="button">Sign UP</a>
+      <a href="forgot.php" class="forgot">Forgot Password?</a>
+      <a href="signup.php" class="button">Sign UP</a>
     </div>
     <script
       src="https://kit.fontawesome.com/75d236b5fd.js"
       crossorigin="anonymous"
-    ></script>
+    >
+  </script>
+  <script>
+    let closebtn= document.querySelector('.btn-close');
+     let divele=document.querySelector('.top');
+     closebtn.addEventListener('click',()=>{
+      divele.style.display="none";
+     })
+  </script>
   </body>
 </html>

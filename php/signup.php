@@ -1,3 +1,32 @@
+<?php
+  $showalert=false;
+  $showerr=false;
+  $useralready=false;
+if($_SERVER['REQUEST_METHOD']=='POST'){
+  include 'connect.php';
+  $username=trim($_POST['user']);
+  $password=$_POST['password'];
+  $cpassword=$_POST['cpassword'];
+  $existsql="Select * from rcb where name='$username' ";
+  $results=mysqli_query($con,$existsql);
+  $numrows=mysqli_num_rows($results);
+  if($numrows>0){
+   $useralready="User Already Exists";
+
+  }else{
+    if(($password==$cpassword)){
+      $hash=password_hash($password,PASSWORD_DEFAULT);
+      $sql="INSERT INTO `rcb` (`name`, `password`, `date`) VALUES ('$username', '$hash', current_timestamp())";
+      $result=mysqli_query($con,$sql);
+      if($result){
+        $showalert=true;
+      }
+    }else{
+      $showerr="Passwords Don't Match";
+    }
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,12 +49,38 @@
     />
   </head>
   <body>
+    <div class="top">
+
+      <?php
+    if($useralready){
+    echo"
+      <div class='alert alert-danger alert-dismissible fade show ' role='alert' >
+      <strong>Error!</strong> ".$useralready."
+      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+      </div>";
+    }
+    if($showerr){
+    echo"
+      <div class='alert alert-danger alert-dismissible fade show ' role='alert' >
+      <strong>Error!</strong> ".$showerr."
+      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+      </div>";
+    }
+    if($showalert){
+    echo"
+    <div class='alert alert-success alert-dismissible fade show' role='alert'>
+      <strong>Success!</strong> Your Account is created Now Log in
+      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+      </div>";
+    }
+    ?>
+    </div>
     <div class="container1">
       <h1>Sign Up</h1>
-      <form action="index.php" method="post">
+      <form action="signup.php" method="post">
         <div class="box">
           <i class="fa fa-envelope"></i>
-          <input
+          <input maxlength="12"
             type="text"
             name="user"
             id="user"
@@ -45,19 +100,26 @@
           <i class="fa fa-key"></i>
           <input
             type="password"
-            name="password"
+            name="cpassword"
             id="pass"
             placeholder="Confirm Password"
           />
         </div>
 
-        <a href="./login.html" class="button">Login</a>
+        <a href="./index.php" class="button">Login</a>
+        <button type="submit" id="sign">Sign UP</button>
       </form>
-      <button id="sign">Sign UP</button>
     </div>
     <script
       src="https://kit.fontawesome.com/75d236b5fd.js"
       crossorigin="anonymous"
     ></script>
+    <script>
+     let closebtn= document.querySelector('.btn-close');
+     let divele=document.querySelector('.top');
+     closebtn.addEventListener('click',()=>{
+      divele.style.display="none";
+     })
+    </script>
   </body>
 </html>

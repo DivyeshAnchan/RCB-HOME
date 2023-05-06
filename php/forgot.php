@@ -1,6 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,27 +22,45 @@
     />
   </head>
   <body>
+    <div class="top">
+
+      <div class='alert alert-success alert-dismissible fade show' role='alert'>
+        <strong>Success!</strong> Email Has Been Sent
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+      </div>
+    </div>
     <div class="container1">
       <h1>Add Your Email To Reset Password</h1>
-      <form action="login.php" method="post">
+      <form action="" method="post">
         <div class="box">
           <i class="fa fa-envelope"></i>
           <input
             type="email"
             name="mail"
             id="mail"
-            placeholder="Enter Your Name"
+            placeholder="Enter Your email"
           />
         </div>
 
-        <button class="logn">Reset</button>
+        <button  type="submit" name="forgot"class="logn" >Reset</button>
       </form>
 
-      <a href="./login.html" class="button">Login</a>
+      <a href="./index.php" class="button">Login</a>
     </div>
     <script
       src="https://kit.fontawesome.com/75d236b5fd.js"
       crossorigin="anonymous"
     ></script>
+    <script>
+      let topp=document.querySelector('.top');
+      let logn=document.querySelector('.logn');
+      logn.addEventListener('click',()=>{
+        topp.style.display="block";
+      })
+      let btn=document.querySelector('.btn-close');
+      btn.addEventListener('click',()=>{
+        topp.style.display="none";
+      })
+    </script>
   </body>
 </html>
